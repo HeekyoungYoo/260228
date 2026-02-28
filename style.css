@@ -8,6 +8,8 @@
   --btn-hover: #45a049;
   --ball-bg: #eee;
   --ball-text: #333;
+  --input-bg: #ffffff;
+  --input-border: #ddd;
 }
 
 [data-theme="dark"] {
@@ -20,20 +22,28 @@
   --btn-hover: #2E7D32;
   --ball-bg: #333;
   --ball-text: #e0e0e0;
+  --input-bg: #2d2d2d;
+  --input-border: #444;
 }
 
 body {
   font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  margin: 0;
   background-color: var(--bg-color);
   background-image: radial-gradient(var(--bg-pattern) 1px, transparent 0);
   background-size: 40px 40px;
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
-  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 2rem;
+  padding: 2rem 0;
 }
 
 .app-container {
@@ -44,10 +54,13 @@ body {
   box-shadow: 0 10px 20px var(--shadow-color);
   transition: background-color 0.3s, box-shadow 0.3s;
   position: relative;
+  width: 90%;
+  max-width: 450px;
 }
 
 h1 {
   color: var(--text-color);
+  margin-top: 1rem;
 }
 
 .lotto-numbers {
@@ -55,6 +68,7 @@ h1 {
   justify-content: center;
   gap: 10px;
   margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
 #generate-btn {
@@ -90,6 +104,61 @@ h1 {
 .theme-toggle:hover {
   background-color: var(--text-color);
   color: var(--container-bg);
+}
+
+/* Ad Inquiry Form Styling */
+.ad-inquiry {
+  background-color: var(--container-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  width: 90%;
+  max-width: 450px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.ad-inquiry h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: 5px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  box-sizing: border-box;
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  background-color: var(--btn-bg);
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--btn-hover);
 }
 
 lotto-ball {
