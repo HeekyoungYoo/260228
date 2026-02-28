@@ -1,166 +1,244 @@
 :root {
-  --bg-color: #f0f0f0;
-  --bg-pattern: #e0e0e0;
-  --container-bg: white;
-  --text-color: #333;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-  --btn-bg: #4CAF50;
-  --btn-hover: #45a049;
-  --ball-bg: #eee;
-  --ball-text: #333;
-  --input-bg: #ffffff;
-  --input-border: #ddd;
+  --bg-color: #f8f9fa;
+  --nav-bg: #ffffff;
+  --container-bg: #ffffff;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --primary-color: #0d6efd;
+  --accent-color: #4CAF50;
+  --accent-hover: #45a049;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --border-color: #dee2e6;
+  --ball-bg: #e9ecef;
+  --ball-text: #212529;
 }
 
 [data-theme="dark"] {
   --bg-color: #121212;
-  --bg-pattern: #2c2c2c;
+  --nav-bg: #1e1e1e;
   --container-bg: #1e1e1e;
-  --text-color: #e0e0e0;
-  --shadow-color: rgba(0, 0, 0, 0.5);
-  --btn-bg: #388E3C;
-  --btn-hover: #2E7D32;
-  --ball-bg: #333;
-  --ball-text: #e0e0e0;
-  --input-bg: #2d2d2d;
-  --input-border: #444;
+  --text-color: #f8f9fa;
+  --text-muted: #adb5bd;
+  --primary-color: #3d8bfd;
+  --accent-color: #388E3C;
+  --accent-hover: #2E7D32;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --border-color: #333;
+  --ball-bg: #2d2d2d;
+  --ball-text: #f8f9fa;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
   margin: 0;
   background-color: var(--bg-color);
-  background-image: radial-gradient(var(--bg-pattern) 1px, transparent 0);
-  background-size: 40px 40px;
   color: var(--text-color);
+  line-height: 1.6;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.wrapper {
+/* Navbar */
+.navbar {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
-  gap: 2rem;
-  padding: 2rem 0;
+  padding: 1rem 5%;
+  background-color: var(--nav-bg);
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+}
+
+/* Layout */
+.content-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 5%;
+}
+
+.section-container {
+  margin-bottom: 4rem;
+  scroll-margin-top: 5rem;
+}
+
+/* Generator Section */
 .app-container {
   text-align: center;
   background-color: var(--container-bg);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px var(--shadow-color);
-  transition: background-color 0.3s, box-shadow 0.3s;
-  position: relative;
-  width: 90%;
-  max-width: 450px;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
 }
 
-h1 {
-  color: var(--text-color);
-  margin-top: 1rem;
+.subtitle {
+  color: var(--text-muted);
+  margin-bottom: 2rem;
 }
 
 .lotto-numbers {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin: 2rem 0;
+  gap: 15px;
+  margin: 2.5rem 0;
   flex-wrap: wrap;
 }
 
 #generate-btn {
-  background-color: var(--btn-bg);
+  background-color: var(--accent-color);
   color: white;
-  padding: 10px 20px;
+  padding: 12px 30px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-  box-shadow: 0 4px 6px var(--shadow-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.2s, background-color 0.3s;
 }
 
-#generate-btn:hover {
-  background-color: var(--btn-hover);
+#generate-btn:active {
+  transform: scale(0.98);
 }
 
-.theme-toggle {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  padding: 5px 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 0.8rem;
-  transition: all 0.3s;
+/* Text Content Sections */
+.text-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  border-left: 5px solid var(--primary-color);
+  padding-left: 1rem;
 }
 
-.theme-toggle:hover {
-  background-color: var(--text-color);
-  color: var(--container-bg);
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
-/* Ad Inquiry Form Styling */
-.ad-inquiry {
+.guide-item {
   background-color: var(--container-bg);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 10px var(--shadow-color);
-  width: 90%;
-  max-width: 450px;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--border-color);
 }
 
-.ad-inquiry h3 {
+.guide-item h3 {
   margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  text-align: center;
+  color: var(--primary-color);
+}
+
+/* Ad Inquiry Form */
+.ad-inquiry {
+  background-color: var(--container-bg);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 10px;
-  border: 1px solid var(--input-border);
-  border-radius: 5px;
-  background-color: var(--input-bg);
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-color);
   color: var(--text-color);
   box-sizing: border-box;
-  font-size: 0.9rem;
-}
-
-.form-group textarea {
-  height: 80px;
-  resize: vertical;
 }
 
 .submit-btn {
   width: 100%;
-  background-color: var(--btn-bg);
+  background-color: var(--primary-color);
   color: white;
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  font-weight: 600;
 }
 
-.submit-btn:hover {
-  background-color: var(--btn-hover);
+/* Footer */
+.site-footer {
+  background-color: var(--nav-bg);
+  padding: 3rem 5%;
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
+  text-align: center;
 }
 
+.footer-info p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  margin-top: 1.5rem;
+}
+
+.footer-links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin: 0 0.5rem;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Lotto Ball Adjustments */
 lotto-ball {
-  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .nav-links {
+    font-size: 0.8rem;
+    gap: 0.8rem;
+  }
 }
